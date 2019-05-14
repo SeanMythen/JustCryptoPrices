@@ -1,0 +1,45 @@
+<!--    
+
+    designed and developed by Sean Mythen
+            www.seanmythen.net
+
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Just Crypto Prices</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="instructions">
+      Hello! <br>
+      This is just a simple price tracker for cryptocurrencies created by me, <a href="https://seanmythen.net/" target="_blank">Sean Mythen</a>! <br>
+      Data is retrieved from <a href="https://www.coingecko.com" target="_blank">CoinGecko</a> every 45 seconds. <br> <br>
+      Use your keyboard's ARROW keys or your mouse's SCROLL wheel to browse the top 200 coins by market cap. <br>
+      Press ENTER on your keyboard to toggle market cap ranking visibility. <br> <br>
+      DOUBLE CLICK anywhere to hide/show these instruction. 
+    </div>  
+    <div id="apiError"></div>
+
+    <div id="mainContainer">
+    <div id="coinRank"></div>   
+    <div id="coinName"></div>    
+    <img id="coinImage" src="" alt="">
+    <div id="coinPrice"></div>
+    </div>  
+    
+    <script src="scripts.js"></script>
+  </body>
+</html>

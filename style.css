@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --mainFontSize: 90px;
+  }
+  
+  html {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: normal;
+    font-family: 'Lobster', cursive;   
+    line-height: 1.6;
+    color: #666;
+    background: #F6F6F6;
+    height: 100vh;
+    cursor: default;
+  }
+
+  body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  #mainContainer{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .5s;
+  }
+
+
+  #apiError {
+    text-align: center;
+    font-size: 30px;
+  }
+
+  #coinRank {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: -30px;
+    transition: font-size .5s;
+  }
+
+  #coinName, #coinPrice, #coinImage {
+    white-space: nowrap;
+    text-align: center;
+    font-size: var(--mainFontSize);
+    transition: .15s ease-in-out;
+  }
+
+  .coinNameBulge {
+    transform: scale(1.2);
+  }
+
+  #coinImage{
+    /* margin-bottom: 10px; */
+    width: 40px;
+    height: 40px;
+  }
+
+  #instructions{
+    /* font-family: 'Lobster Two', cursive; */
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 22px;
+    transition: opacity .5s;
+  }
+
+  a{
+    color: black;
+  }
+
