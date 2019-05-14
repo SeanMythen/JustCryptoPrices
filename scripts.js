@@ -151,13 +151,3 @@ function toggleInfo(){
   
   
 }
-
-
-
-
-
-
-
-
-
-// https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBtgkAcjjtzW6xntin6hpv6dQhmK5s1xqU
