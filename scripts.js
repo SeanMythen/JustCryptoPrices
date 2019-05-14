@@ -7,6 +7,7 @@ var coinImageSRC = document.getElementById('coinImage')
 var coinPriceDiv = document.getElementById('coinPrice')
 var instructionsDiv = document.getElementById('instructions')
 var mainContainerDiv = document.getElementById('mainContainer')
+var mobileMessageDiv = document.getElementById('mobileMessage');
 
 document.addEventListener('wheel', coinIncrement);
 document.addEventListener("keydown", coinIncrement);
@@ -20,8 +21,6 @@ var errorVal = 0;
 mainContainerDiv.style.display = "none"
 mainContainerDiv.style.visibility = "hidden"
 mainContainerDiv.style.opacity = "0"
-
-
 
 getData()
 
@@ -86,12 +85,8 @@ function hideMC(e) {
 
 
 function bulgeAnimation() {
-  // coinNameDiv.classList.add("coinNameBulge");
-  // coinImageSRC.classList.add("coinNameBulge");
   coinPriceDiv.classList.add("coinNameBulge");
   setTimeout(function () {
-    // coinNameDiv.classList.remove("coinNameBulge");
-    // coinImageSRC.classList.remove("coinNameBulge");
     coinPriceDiv.classList.remove("coinNameBulge");
   }, 175);
 
@@ -148,6 +143,29 @@ function toggleInfo(){
 
     console.log('pong')
   }
-  
-  
+    
 }
+
+
+if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i))
+ {
+
+  instructionsDiv.style.display = "none"
+  instructionsDiv.style.visibility = "hidden"
+  instructionsDiv.style.opacity = "0"
+
+  mainContainerDiv.style.display = "none"
+  mainContainerDiv.style.visibility = "hidden"
+  mainContainerDiv.style.opacity = "0"
+
+  mobileMessageDiv.innerHTML = "It seems like you are using a mobile device, try visiting us again on your computer!"
+  apiError.style.display = "none";
+
+ }
+
