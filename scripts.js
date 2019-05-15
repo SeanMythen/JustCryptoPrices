@@ -14,13 +14,10 @@ document.addEventListener("keydown", coinIncrement);
 document.addEventListener("dblclick", toggleInfo);
 document.addEventListener("keydown", hideMC);
 
+firstVisit();
+
 var coinIndex = 0;
 var errorVal = 0;
-
-
-mainContainerDiv.style.display = "none"
-mainContainerDiv.style.visibility = "hidden"
-mainContainerDiv.style.opacity = "0"
 
 getData()
 
@@ -109,6 +106,21 @@ function change_favicon(img) {
 }
 
 
+function firstVisit(){
+  if(localStorage.getItem("firstVisitToPage")==null){
+    console.log('DOM fully loaded and parsed');
+    instructionsDiv.style.display = "block"
+    instructionsDiv.style.visibility = "visible"
+    instructionsDiv.style.opacity = "1"
+
+    mainContainerDiv.style.display = "none"
+    mainContainerDiv.style.visibility = "hidden"
+    mainContainerDiv.style.opacity = "0"
+    localStorage.setItem("firstVisitToPage","done");
+  }
+}
+
+
 function toggleInfo(){
   if (window.getComputedStyle(instructionsDiv).display == "block" && errorVal == 0){
     instructionsDiv.style.display = "none"
@@ -127,7 +139,6 @@ function toggleInfo(){
     instructionsDiv.style.visibility = "hidden"
     instructionsDiv.style.opacity = "0"
 
-    mainContainerDiv.style.display = "none"
     mainContainerDiv.style.visibility = "hidden"
     mainContainerDiv.style.opacity = "0"
 

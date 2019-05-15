@@ -48,10 +48,12 @@
   }
 
   #mainContainer{
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: opacity .5s;
+    visibility: visible;
   }
 
 
@@ -90,6 +92,9 @@
     font-size: 22px;
     transition: opacity .5s;
     max-width: 90vw;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
   }
 
 
