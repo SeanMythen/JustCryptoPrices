@@ -129,8 +129,7 @@ function toggleInfo(){
     
     mainContainerDiv.style.display = "flex"
     mainContainerDiv.style.visibility = "visible"
-    mainContainerDiv.style.opacity = "1"
-    
+    setTimeout(function(){ mainContainerDiv.style.opacity = "1" }, 10);    
 
     console.log('ping')
   }
