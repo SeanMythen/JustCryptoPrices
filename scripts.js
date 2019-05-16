@@ -109,13 +109,20 @@ if (navigator.userAgent.match(/Android/i)
   mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
   mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
-  mc.get('pan').set({ threshold: 100});
+  mc.get('pan').set({ threshold: 20});
 
 
 
 
   mc.on("panleft", function(ev)  {
     if (coinIndex != 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      coinIndex = coinIndex;
+      coinIndex = coinIndex;
+      coinIndex = coinIndex;
+      coinIndex = coinIndex;
+      coinIndex = coinIndex;
+      coinIndex = coinIndex;
+      coinIndex = coinIndex;
       coinIndex++;
       console.log(coinIndex);
       console.log('hey')
