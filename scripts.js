@@ -109,27 +109,10 @@ if (navigator.userAgent.match(/Android/i)
   mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
   mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
-  mc.get('pan').set({ threshold: 20});
+  mc.get('swipe').set({ threshold: 20});
 
 
 
-
-  mc.on("panleft", function(ev)  {
-    if (coinIndex != 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
-      coinIndex = coinIndex;
-      coinIndex = coinIndex;
-      coinIndex = coinIndex;
-      coinIndex = coinIndex;
-      coinIndex = coinIndex;
-      coinIndex = coinIndex;
-      coinIndex = coinIndex;
-      coinIndex++;
-      console.log(coinIndex);
-      console.log('hey')
-      getData()
-      bulgeAnimation()
-    }
-  });
 
   mc.on("swipeleft", function(ev)  {
     if (coinIndex != 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
@@ -141,7 +124,7 @@ if (navigator.userAgent.match(/Android/i)
     }
   });
 
-  mc.on("panright", function(ev)  {
+  mc.on("swiperight", function(ev)  {
     if (coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
       coinIndex--;
       console.log(coinIndex);
