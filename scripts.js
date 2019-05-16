@@ -13,7 +13,18 @@ var wholePage = document.body;
 
 document.addEventListener('wheel', coinIncrement);
 document.addEventListener("keydown", coinIncrement);
+
+if(!(navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)))
+ {
 document.addEventListener("dblclick", toggleInfo);
+ }
+
 document.addEventListener("keydown", hideMC);
 
 firstVisit();
@@ -86,8 +97,8 @@ if (navigator.userAgent.match(/Android/i)
 
 
 
-  mc.add( new Hammer.Swipe({ event: 'swipeleft', threshold: 15, pointers: 1}) );
-  mc.add( new Hammer.Swipe({ event: 'swiperight', threshold: 15, pointers: 1}) );
+  mc.add( new Hammer.Swipe({ event: 'panleft', threshold: 15, pointers: 1, velocity: 0.3}) );
+  mc.add( new Hammer.Swipe({ event: 'panright', threshold: 15, pointers: 1, velocity: 0.3}) );
   mc.add( new Hammer.Swipe({ event: 'swipedown', threshold: 15, pointers: 1}) );
   mc.add( new Hammer.Swipe({ event: 'swipeup', threshold: 15, pointers: 1}) );
 
@@ -96,7 +107,7 @@ if (navigator.userAgent.match(/Android/i)
 
 
 
-  mc.on("swipeleft", function(ev)  {
+  mc.on("panleft", function(ev)  {
     if (coinIndex != 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
       coinIndex++;
       console.log(coinIndex);
@@ -106,7 +117,7 @@ if (navigator.userAgent.match(/Android/i)
     }
   });
 
-  mc.on("swiperight", function(ev)  {
+  mc.on("panright", function(ev)  {
     if (coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
       coinIndex--;
       console.log(coinIndex);
@@ -208,14 +219,7 @@ function firstVisit(){
 
 
 function toggleInfo(){
-  if (!(navigator.userAgent.match(/Android/i)
-  || navigator.userAgent.match(/webOS/i)
-  || navigator.userAgent.match(/iPhone/i)
-  || navigator.userAgent.match(/iPad/i)
-  || navigator.userAgent.match(/iPod/i)
-  || navigator.userAgent.match(/BlackBerry/i)
-  || navigator.userAgent.match(/Windows Phone/i)) &&
-  window.getComputedStyle(instructionsDiv).display == "block" && errorVal == 0){
+  if (window.getComputedStyle(instructionsDiv).display == "block" && errorVal == 0){
     instructionsDiv.style.display = "none"
     instructionsDiv.style.visibility = "hidden"
     instructionsDiv.style.opacity = "0"
