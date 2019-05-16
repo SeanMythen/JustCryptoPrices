@@ -73,8 +73,13 @@ if (navigator.userAgent.match(/Android/i)
   var mc2 = new Hammer.Manager(wholePage);
 
 
+
   mc2.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
   mc2.get('doubletap').set({ event: 'doubletap' });
+
+  mc.add( new Hammer.Tap({ event: 'singletap' }) );
+  mc.get('doubletap').recognizeWith('singletap');
+  mc.get('singletap').requireFailure('doubletap');
 
   mc2.on("doubletap", function(ev)  {
 
