@@ -74,27 +74,22 @@ if (navigator.userAgent.match(/Android/i)
 
 
 
-  mc2.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
-  mc2.get('doubletap').set({ event: 'doubletap' });
+  // mc2.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
+  // mc2.get('doubletap').set({ event: 'doubletap' });
 
-  mc.add( new Hammer.Tap({ event: 'singletap' }) );
-  mc.get('doubletap').recognizeWith('singletap');
-  mc.get('singletap').requireFailure('doubletap');
 
-  mc2.on("doubletap", function(ev)  {
+  // mc2.on("doubletap", function(ev)  {
 
-    console.log('pep');
-    toggleInfo();
+  //   console.log('pep');
+  //   toggleInfo();
+  // });
 
 
 
-  });
-
-
-
-  mc.add( new Hammer.Swipe({ event: 'swipeleft', threshold: 10, pointers: 1}) );
-  mc.add( new Hammer.Swipe({ event: 'swiperight', threshold: 10, pointers: 1}) );
-  mc.add( new Hammer.Swipe({ event: 'swipedown', threshold: 10, pointers: 1}) );
+  mc.add( new Hammer.Swipe({ event: 'swipeleft', threshold: 15, pointers: 1}) );
+  mc.add( new Hammer.Swipe({ event: 'swiperight', threshold: 15, pointers: 1}) );
+  mc.add( new Hammer.Swipe({ event: 'swipedown', threshold: 15, pointers: 1}) );
+  mc.add( new Hammer.Swipe({ event: 'swipeup', threshold: 15, pointers: 1}) );
 
   mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
@@ -121,7 +116,7 @@ if (navigator.userAgent.match(/Android/i)
     }
   });
 
-  mc.on("swipedown", function(ev)  {
+  mc.on("swipeup", function(ev)  {
 
     if (window.getComputedStyle(mainContainerDiv).display == "flex" && window.getComputedStyle(coinRankDiv).fontSize == "0px") {
       coinRankDiv.style.fontSize = "6vw"
@@ -131,6 +126,12 @@ if (navigator.userAgent.match(/Android/i)
       }
       console.log('test')
 
+  });
+
+  mc.on("swipedown", function(ev)  {
+
+    console.log('pep');
+    toggleInfo();
   });
 
 }
@@ -266,6 +267,6 @@ if( navigator.userAgent.match(/Android/i)
   This is just a simple price tracker for cryptocurrencies created by me, <a href="https://seanmythen.net/" target="_blank">Sean Mythen</a>! <br> <br>
   Data is retrieved from <a href="https://www.coingecko.com" target="_blank">CoinGecko</a> every minute. <br> <br>
   Swipe LEFT or RIGHT to browse the top 200 coins by market cap. <br> <br>
-  Swipe DOWN to toggle market cap ranking visibility. <br> <br>
-  DOUBLE TAP to hide/show these instruction.`
+  Swipe UP to toggle market cap ranking visibility. <br> <br>
+  Swipe DOWN to hide/show these instruction.`
  }
