@@ -96,7 +96,7 @@ if (navigator.userAgent.match(/Android/i)
 
 
 
-  mc.on("panleft", function(ev)  {
+  mc.on("swipeleft", function(ev)  {
     if (coinIndex != 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
       coinIndex++;
       console.log(coinIndex);
@@ -106,7 +106,7 @@ if (navigator.userAgent.match(/Android/i)
     }
   });
 
-  mc.on("panright", function(ev)  {
+  mc.on("swiperight", function(ev)  {
     if (coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
       coinIndex--;
       console.log(coinIndex);
