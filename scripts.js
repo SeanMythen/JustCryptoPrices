@@ -97,8 +97,8 @@ if (navigator.userAgent.match(/Android/i)
 
 
 
-  mc.add( new Hammer.Swipe({ event: 'panleft', threshold: 15, pointers: 1, velocity: 0.3}) );
-  mc.add( new Hammer.Swipe({ event: 'panright', threshold: 15, pointers: 1, velocity: 0.3}) );
+  mc.add( new Hammer.Swipe({ event: 'panleft', threshold: 100, pointers: 1, velocity: 0.3}) );
+  mc.add( new Hammer.Swipe({ event: 'panright', threshold: 100, pointers: 1, velocity: 0.3}) );
   mc.add( new Hammer.Swipe({ event: 'swipedown', threshold: 15, pointers: 1}) );
   mc.add( new Hammer.Swipe({ event: 'swipeup', threshold: 15, pointers: 1}) );
 
