@@ -41,10 +41,9 @@
   <body>
     <div id="mobileMessage"></div>
     <div id="instructions">
-      Hello! <br>
-      This is just a simple price tracker for cryptocurrencies created by me, <a href="https://seanmythen.net/" target="_blank">Sean Mythen</a>! <br>
-      Data is retrieved from <a href="https://www.coingecko.com" target="_blank">CoinGecko</a> every 45 seconds. <br> <br>
-      Use your keyboard's ARROW keys or your mouse's SCROLL wheel to browse the top 200 coins by market cap. <br>
+      Hello! This is just a simple price tracker for cryptocurrencies created by me, <a href="https://seanmythen.net/" target="_blank">Sean Mythen</a>! <br> <br>
+      Data is retrieved from <a href="https://www.coingecko.com" target="_blank">CoinGecko</a> every minute. <br> <br>
+      Use your keyboard's ARROW keys or your mouse's SCROLL wheel to browse the top 200 coins by market cap. <br> <br>
       Press ENTER on your keyboard to toggle market cap ranking visibility. <br> <br>
       DOUBLE CLICK anywhere to hide/show these instruction. 
     </div>  
@@ -57,7 +56,11 @@
     <div id="coinPrice"></div>
     </div>  
     
+    <script src="textFit.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    
     <script src="scripts.js"></script>
+
 
 
   </body>

@@ -5,6 +5,7 @@
 
   :root {
     --mainFontSize: 90px;
+    --MCSize: calc(var(--mainFontSize) / 3)
   }
   
   html {
@@ -48,6 +49,8 @@
   }
 
   #mainContainer{
+    width: 90vw;
+    height: 90vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,13 +67,14 @@
   #coinRank {
     display: block;
     text-align: center;
-    font-size: 30px;
+    font-size: var(--MCSize);
     margin-bottom: -30px;
     transition: font-size .5s;
   }
 
   #coinName, #coinPrice, #coinImage {
-    white-space: nowrap;
+    word-wrap: break-word;
+    /* white-space: nowrap; */
     text-align: center;
     font-size: var(--mainFontSize);
     transition: .15s ease-in-out;
@@ -94,14 +98,4 @@
     display: none;
     visibility: hidden;
     opacity: 0;
-  }
-
-
-
-  #mobileMessage{
-    font-family: 'Oswald', sans-serif;
-    text-align: center;
-    font-size: 22px;
-    transition: opacity .5s;
-    max-width: 90vw;
   }

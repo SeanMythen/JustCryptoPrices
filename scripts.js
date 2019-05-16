@@ -1,3 +1,4 @@
+
 change_favicon(coinImage);
 
 var apiError = document.getElementById('apiError')
@@ -7,7 +8,8 @@ var coinImageSRC = document.getElementById('coinImage')
 var coinPriceDiv = document.getElementById('coinPrice')
 var instructionsDiv = document.getElementById('instructions')
 var mainContainerDiv = document.getElementById('mainContainer')
-var mobileMessageDiv = document.getElementById('mobileMessage');
+var wholePage = document.body;
+
 
 document.addEventListener('wheel', coinIncrement);
 document.addEventListener("keydown", coinIncrement);
@@ -21,7 +23,7 @@ var errorVal = 0;
 
 getData()
 
-setInterval(getData, 45000);
+setInterval(getData, 60000);
 
 function getData() {
   fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1&sparkline=false')
@@ -52,6 +54,84 @@ function getData() {
       apiError.innerHTML = 'Something seems to be wrong... Check back in a few minutes.';
     })
 }
+
+
+
+
+
+if (navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i))
+
+ {
+
+  var mc = new Hammer(wholePage);
+  var mc2 = new Hammer.Manager(wholePage);
+
+
+  mc2.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
+  mc2.get('doubletap').set({ event: 'doubletap' });
+
+  mc2.on("doubletap", function(ev)  {
+
+    console.log('pep');
+    toggleInfo();
+
+
+
+  });
+
+
+
+  mc.add( new Hammer.Swipe({ event: 'swipeleft', threshold: 10, pointers: 1}) );
+  mc.add( new Hammer.Swipe({ event: 'swiperight', threshold: 10, pointers: 1}) );
+  mc.add( new Hammer.Swipe({ event: 'swipedown', threshold: 10, pointers: 1}) );
+
+  mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+
+
+
+  mc.on("panleft", function(ev)  {
+    if (coinIndex != 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      coinIndex++;
+      console.log(coinIndex);
+      console.log('hey')
+      getData()
+      bulgeAnimation()
+    }
+  });
+
+  mc.on("panright", function(ev)  {
+    if (coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      coinIndex--;
+      console.log(coinIndex);
+      console.log('back')
+      getData()
+      bulgeAnimation()
+    }
+  });
+
+  mc.on("swipedown", function(ev)  {
+
+    if (window.getComputedStyle(mainContainerDiv).display == "flex" && window.getComputedStyle(coinRankDiv).fontSize == "0px") {
+      coinRankDiv.style.fontSize = "6vw"
+    }
+    else if (window.getComputedStyle(mainContainerDiv).display == "flex" && window.getComputedStyle(coinRankDiv).fontSize < "6vw") {
+      coinRankDiv.style.fontSize = "0px"
+      }
+      console.log('test')
+
+  });
+
+}
+
+
+  
 
 function coinIncrement(e) {
   Y = e.deltaY;
@@ -157,6 +237,10 @@ function toggleInfo(){
 }
 
 
+
+
+
+
 if( navigator.userAgent.match(/Android/i)
  || navigator.userAgent.match(/webOS/i)
  || navigator.userAgent.match(/iPhone/i)
@@ -166,16 +250,17 @@ if( navigator.userAgent.match(/Android/i)
  || navigator.userAgent.match(/Windows Phone/i))
  {
 
-  instructionsDiv.style.display = "none"
-  instructionsDiv.style.visibility = "hidden"
-  instructionsDiv.style.opacity = "0"
+  instructionsDiv.style.fontSize=('4.1vw');
+  coinNameDiv.style.fontSize=('12vw');
+  coinPriceDiv.style.fontSize=('12vw');
+  coinRankDiv.style.fontSize=('6vw');
+  coinRankDiv.style.marginBottom=('-15px');
 
-  mainContainerDiv.style.display = "none"
-  mainContainerDiv.style.visibility = "hidden"
-  mainContainerDiv.style.opacity = "0"
-
-  mobileMessageDiv.innerHTML = "It seems like you are using a mobile device, try visiting us again on your computer!"
-  apiError.style.display = "none";
-
+  instructionsDiv.innerHTML = 
+  `Hello!
+  This is just a simple price tracker for cryptocurrencies created by me, <a href="https://seanmythen.net/" target="_blank">Sean Mythen</a>! <br> <br>
+  Data is retrieved from <a href="https://www.coingecko.com" target="_blank">CoinGecko</a> every minute. <br> <br>
+  Swipe LEFT or RIGHT to browse the top 200 coins by market cap. <br> <br>
+  Swipe DOWN to toggle market cap ranking visibility. <br> <br>
+  DOUBLE TAP to hide/show these instruction.`
  }
-
