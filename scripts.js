@@ -81,7 +81,7 @@ if (navigator.userAgent.match(/Android/i)
  {
 
   var mc = new Hammer(wholePage);
-  var mc2 = new Hammer.Manager(wholePage);
+  // var mc2 = new Hammer.Manager(wholePage);
 
 
 
@@ -97,17 +97,34 @@ if (navigator.userAgent.match(/Android/i)
 
 
 
-  mc.add( new Hammer.Swipe({ event: 'panleft', threshold: 100, pointers: 1, velocity: 0.3}) );
-  mc.add( new Hammer.Swipe({ event: 'panright', threshold: 100, pointers: 1, velocity: 0.3}) );
-  mc.add( new Hammer.Swipe({ event: 'swipedown', threshold: 15, pointers: 1}) );
-  mc.add( new Hammer.Swipe({ event: 'swipeup', threshold: 15, pointers: 1}) );
+  // mc.add( new Hammer.Swipe({ event: 'panleft', threshold: 1000, pointers: 1, velocity: 0.3}) );
+  // mc.add( new Hammer.Swipe({ event: 'panright', threshold: 1000, pointers: 1, velocity: 0.3}) );
 
+  // mc.add( new Hammer.Swipe({ event: 'swipeleft', threshold: 15, pointers: 1}) );
+  // mc.add( new Hammer.Swipe({ event: 'swiperight', threshold: 15, pointers: 1}) );
+
+  // mc.add( new Hammer.Swipe({ event: 'swipedown', threshold: 15, pointers: 1}) );
+  // mc.add( new Hammer.Swipe({ event: 'swipeup', threshold: 15, pointers: 1}) );
+
+  mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
   mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+  mc.get('pan').set({ threshold: 100});
 
 
 
 
   mc.on("panleft", function(ev)  {
+    if (coinIndex != 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      coinIndex++;
+      console.log(coinIndex);
+      console.log('hey')
+      getData()
+      bulgeAnimation()
+    }
+  });
+
+  mc.on("swipeleft", function(ev)  {
     if (coinIndex != 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
       coinIndex++;
       console.log(coinIndex);
