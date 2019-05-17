@@ -46,7 +46,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
   }
 
   #mainContainer{
@@ -69,8 +68,11 @@
     display: block;
     text-align: center;
     font-size: var(--MCSize);
-    margin-bottom: -30px;
     transition: font-size .5s;
+  }
+
+  #coinName {
+    margin-top: -12.5px;
   }
 
   #coinName, #coinPrice, #coinImage {

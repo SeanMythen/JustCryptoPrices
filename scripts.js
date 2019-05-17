@@ -17,6 +17,8 @@ var rightTap = document.getElementById('rightTap')
 document.addEventListener('wheel', coinIncrement);
 document.addEventListener("keydown", coinIncrement);
 
+document.addEventListener("keydown", fontSizeChange);
+
 if(!(navigator.userAgent.match(/Android/i)
  || navigator.userAgent.match(/webOS/i)
  || navigator.userAgent.match(/iPhone/i)
@@ -36,6 +38,8 @@ firstVisit();
 
 var coinIndex = 0;
 var errorVal = 0;
+var scaleVar = 90;
+var scaleVarMC = 30;
 
 getData()
 
@@ -251,25 +255,25 @@ if (navigator.userAgent.match(/Android/i)
 function coinIncrement(e) {
   Y = e.deltaY;
   // console.log(Y);
-  if ((Y > 0 || e.which == 40 || e.which == 39) && coinIndex != 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+  if ((Y > 0 || e.which == 39) && coinIndex != 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
     coinIndex++;
     console.log(coinIndex);
     getData()
     bulgeAnimation()
   }
-  else if ((Y > 0 || e.which == 40 || e.which == 39) && coinIndex == 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+  else if ((Y > 0 || e.which == 39) && coinIndex == 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
     coinIndex = 0;
     console.log(coinIndex);
     getData()
     bulgeAnimation()
   }
-  else if ((Y < 0 || e.which == 38 || e.which == 37) && coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+  else if ((Y < 0 || e.which == 37) && coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
     coinIndex--;
     console.log(coinIndex);
     getData()
     bulgeAnimation()
   }  
-  else if ((Y < 0 || e.which == 38 || e.which == 37) && coinIndex == 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+  else if ((Y < 0 || e.which == 37) && coinIndex == 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
     coinIndex = 199;
     console.log(coinIndex);
     getData()
@@ -277,12 +281,42 @@ function coinIncrement(e) {
   }  
 }
 
+function fontSizeChange(e) {  
+
+  if ((e.which == 38 ) && scaleVar < 140 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+    scaleVar = scaleVar + 5;
+    scaleVarMC = scaleVarMC + 1.5;
+
+    coinRankDiv.style.fontSize = scaleVarMC + "px"
+    coinNameDiv.style.fontSize = scaleVar + "px"
+    coinImageSRC.style.fontSize = scaleVar + "px"
+    coinPriceDiv.style.fontSize = scaleVar + "px"
+    console.log('up')
+    console.log(scaleVar)
+  }  
+  else if (( e.which == 40 ) && scaleVar > 30 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+    scaleVar = scaleVar - 5;
+    scaleVarMC = scaleVarMC - 1.5;
+    
+    coinRankDiv.style.fontSize = scaleVarMC + "px"
+    coinNameDiv.style.fontSize = scaleVar + "px"
+    coinImageSRC.style.fontSize = scaleVar + "px"
+    coinPriceDiv.style.fontSize = scaleVar + "px"
+    console.log('down')
+    console.log(scaleVar)
+  }
+}
+
+
+
+
+
 function hideMC(e) {
-  if (e.which == 13 && window.getComputedStyle(mainContainerDiv).display == "flex" && window.getComputedStyle(coinRankDiv).fontSize == "30px") {
+  if (e.which == 13 && window.getComputedStyle(mainContainerDiv).display == "flex" && window.getComputedStyle(coinRankDiv).fontSize > "0px") {
     coinRankDiv.style.fontSize = "0px"
   }
   else if (e.which == 13 && window.getComputedStyle(mainContainerDiv).display == "flex" && window.getComputedStyle(coinRankDiv).fontSize == "0px") {
-    coinRankDiv.style.fontSize = "30px"
+    coinRankDiv.style.fontSize = scaleVarMC + "px"
     }
 
 }
