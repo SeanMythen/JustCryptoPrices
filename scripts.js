@@ -10,6 +10,9 @@ var instructionsDiv = document.getElementById('instructions')
 var mainContainerDiv = document.getElementById('mainContainer')
 var wholePage = document.body;
 
+var leftTap = document.getElementById('leftTap')
+var rightTap = document.getElementById('rightTap')
+
 
 document.addEventListener('wheel', coinIncrement);
 document.addEventListener("keydown", coinIncrement);
@@ -81,19 +84,56 @@ if (navigator.userAgent.match(/Android/i)
  {
 
   var mc = new Hammer(wholePage);
-  // var mc2 = new Hammer.Manager(wholePage);
+
+  var leftTapHammer = new Hammer.Manager(leftTap);
+  var rightTapHammer = new Hammer.Manager(rightTap);
+
+  leftTapHammer.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
+  leftTapHammer.get('doubletap').set({ event: 'doubletap' });
+
+  rightTapHammer.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
+  rightTapHammer.get('doubletap').set({ event: 'doubletap' });
 
 
+  leftTapHammer.on("doubletap", function(ev)  {
 
-  // mc2.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
-  // mc2.get('doubletap').set({ event: 'doubletap' });
+    console.log('pep');
+    if (coinIndex <= 199 && coinIndex >= 15 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      coinIndex = coinIndex - 15;
+      console.log(coinIndex);
+      console.log('hey')
+      getData()
+      bulgeAnimation()
+    }
+    else if (coinIndex < 15 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      var x = (15 - coinIndex);
+      coinIndex = 200 - x;
+      console.log(coinIndex);
+      console.log('he')
+      getData()
+      bulgeAnimation()
+    }
+  });
 
+  rightTapHammer.on("doubletap", function(ev)  {
 
-  // mc2.on("doubletap", function(ev)  {
-
-  //   console.log('pep');
-  //   toggleInfo();
-  // });
+    console.log('pop');
+    if (coinIndex >= 0 && coinIndex <= 184 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      coinIndex = coinIndex + 15;
+      console.log(coinIndex);
+      console.log('hey')
+      getData()
+      bulgeAnimation()
+    }
+    else if (coinIndex > 184 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      var x = (200 - coinIndex);
+      coinIndex = 15 - x;
+      console.log(coinIndex);
+      console.log('he')
+      getData()
+      bulgeAnimation()
+    }
+  });
 
 
 
@@ -105,6 +145,19 @@ if (navigator.userAgent.match(/Android/i)
 
   // mc.add( new Hammer.Swipe({ event: 'swipedown', threshold: 15, pointers: 1}) );
   // mc.add( new Hammer.Swipe({ event: 'swipeup', threshold: 15, pointers: 1}) );
+
+
+  mc.get('press').set({ time: 700 });
+
+  mc.on("press", function(ev)  {
+    if (coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      coinIndex = 0;
+      console.log('hey')
+      getData()
+      bulgeAnimation()
+    }
+  });
+
 
   mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
   mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
@@ -122,11 +175,47 @@ if (navigator.userAgent.match(/Android/i)
       getData()
       bulgeAnimation()
     }
+    else if (window.getComputedStyle(instructionsDiv).display == "block" && errorVal == 0){
+      instructionsDiv.style.display = "none"
+      instructionsDiv.style.visibility = "hidden"
+      instructionsDiv.style.opacity = "0"
+      
+      mainContainerDiv.style.display = "flex"
+      mainContainerDiv.style.visibility = "visible"
+      setTimeout(function(){ mainContainerDiv.style.opacity = "1" }, 30);    
+  
+      console.log('ping')
+    }
+    else if (coinIndex == 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      coinIndex = 0;
+      console.log(coinIndex);
+      console.log('back')
+      getData()
+      bulgeAnimation()
+    }
   });
 
   mc.on("swiperight", function(ev)  {
     if (coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
       coinIndex--;
+      console.log(coinIndex);
+      console.log('back')
+      getData()
+      bulgeAnimation()
+    }
+    else if (window.getComputedStyle(instructionsDiv).display == "block" && errorVal == 0){
+      instructionsDiv.style.display = "none"
+      instructionsDiv.style.visibility = "hidden"
+      instructionsDiv.style.opacity = "0"
+      
+      mainContainerDiv.style.display = "flex"
+      mainContainerDiv.style.visibility = "visible"
+      setTimeout(function(){ mainContainerDiv.style.opacity = "1" }, 30);    
+  
+      console.log('ping')
+    }
+    else if (coinIndex == 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+      coinIndex = 199;
       console.log(coinIndex);
       console.log('back')
       getData()
@@ -166,8 +255,20 @@ function coinIncrement(e) {
     getData()
     bulgeAnimation()
   }
-  if ((Y < 0 || e.which == 38 || e.which == 37) && coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+  else if ((Y > 0 || e.which == 40 || e.which == 39) && coinIndex == 199 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+    coinIndex = 0;
+    console.log(coinIndex);
+    getData()
+    bulgeAnimation()
+  }
+  else if ((Y < 0 || e.which == 38 || e.which == 37) && coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
     coinIndex--;
+    console.log(coinIndex);
+    getData()
+    bulgeAnimation()
+  }  
+  else if ((Y < 0 || e.which == 38 || e.which == 37) && coinIndex == 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+    coinIndex = 199;
     console.log(coinIndex);
     getData()
     bulgeAnimation()
@@ -233,7 +334,7 @@ function toggleInfo(){
     
     mainContainerDiv.style.display = "flex"
     mainContainerDiv.style.visibility = "visible"
-    setTimeout(function(){ mainContainerDiv.style.opacity = "1" }, 10);    
+    setTimeout(function(){ mainContainerDiv.style.opacity = "1" }, 30);    
 
     console.log('ping')
   }
@@ -285,6 +386,8 @@ if( navigator.userAgent.match(/Android/i)
   This is just a simple price tracker for cryptocurrencies created by me, <a href="https://seanmythen.net/" target="_blank">Sean Mythen</a>! <br> <br>
   Data is retrieved from <a href="https://www.coingecko.com" target="_blank">CoinGecko</a> every minute. <br> <br>
   Swipe LEFT or RIGHT to browse the top 200 coins by market cap. <br> <br>
+  DOUBLE TAP on the LEFT or RIGHT of your screen to jump up or down 15 coins respectively. <br> <br>
+  Tap and HOLD to jump back to the 1st coin. <br> <br>
   Swipe UP to toggle market cap ranking visibility. <br> <br>
   Swipe DOWN to hide/show these instruction.`
  }

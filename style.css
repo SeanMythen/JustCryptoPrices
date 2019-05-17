@@ -39,6 +39,7 @@
   }
 
   body{
+    position: relative;
     height: 100%;
     width: 100%;
     display: flex;
@@ -90,6 +91,7 @@
   }
 
   #instructions{
+    z-index: 3;
     font-family: 'Oswald', sans-serif;
     text-align: center;
     font-size: 22px;
@@ -98,4 +100,25 @@
     display: none;
     visibility: hidden;
     opacity: 0;
+  }
+
+  #doubleTapControls{
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  #leftTap{
+    width: 50%;
+    height: 100%;
+  }
+
+  #rightTap{
+    width: 50%;
+    height: 100%;
   }
