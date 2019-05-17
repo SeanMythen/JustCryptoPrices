@@ -1,6 +1,4 @@
 
-change_favicon(coinImage);
-
 var apiError = document.getElementById('apiError')
 var coinRankDiv = document.getElementById('coinRank')
 var coinNameDiv = document.getElementById('coinName')
@@ -43,6 +41,8 @@ var scaleVarMC = 30;
 
 getData()
 
+change_favicon(coinImageSRC.src);
+
 setInterval(getData, 60000);
 
 function getData() {
@@ -65,7 +65,7 @@ function getData() {
       coinPrice = '$'+ data[coinIndex].current_price;
       coinPriceDiv.innerHTML = coinPrice;
 
-      change_favicon(coinImage);
+      change_favicon(coinImageSRC.src);
       bulgeAnimation();
     })
     .catch(err => {
