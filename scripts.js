@@ -30,6 +30,8 @@ document.addEventListener("dblclick", toggleInfo);
 
 document.addEventListener("keydown", hideMC);
 
+document.addEventListener("keydown", backToOne);
+
 firstVisit();
 
 var coinIndex = 0;
@@ -282,6 +284,16 @@ function hideMC(e) {
   else if (e.which == 13 && window.getComputedStyle(mainContainerDiv).display == "flex" && window.getComputedStyle(coinRankDiv).fontSize == "0px") {
     coinRankDiv.style.fontSize = "30px"
     }
+
+}
+
+function backToOne(e) {
+  if (e.which == 32 && coinIndex != 0 && window.getComputedStyle(mainContainerDiv).display == "flex") {
+    coinIndex = 0;
+    console.log('hey')
+    getData()
+    bulgeAnimation()
+  }
 
 }
 
