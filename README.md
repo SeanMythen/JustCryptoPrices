@@ -1,6 +1,6 @@
 # JustCryptoPrices
 https://JustCryptoPrices.com
 
-Display a single cryptocurrency on your screen!
+Display cryptocurrency prices on your screen!
 
-Meant to be kept open on the side of your desktop so that you can casually monitor prices.
+This website is meant to be kept open on the side of your workspace so that you can casually monitor prices.
