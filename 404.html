@@ -1,0 +1,67 @@
+<!--    
+
+    designed and developed by Sean Mythen
+            www.seanmythen.net
+
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-64778303-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-64778303-9');
+</script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579" />
+
+    <title>Just Crypto Prices</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    
+  </head>
+
+  <body>
+    <div id="doubleTapControls">
+    <div id="leftTap"></div>
+    <div id="rightTap"></div>
+  </div>
+    <div id="mobileMessage"></div>
+    <div id="instructions">
+      Hello! This is just a simple price tracker for cryptocurrencies created by me, <a href="https://seanmythen.net/" target="_blank">Sean Mythen</a>! <br> <br>
+      Data is retrieved from <a href="https://www.coingecko.com" target="_blank">CoinGecko</a> every minute. <br> <br>
+      Use your keyboard's LEFT and RIGHT arrow keys or your mouse's SCROLL wheel to browse the top 200 coins by market cap. <br> <br>
+      Use your keyboard's UP and DOWN arrow keys to change font size. <br> <br>
+      Press the SPACEBAR on your keyboard to jump back to the 1st coin. <br> <br>
+      Press ENTER on your keyboard to toggle market cap ranking visibility. <br> <br>
+      DOUBLE CLICK anywhere to hide/show these instruction. 
+    </div>  
+    <div id="apiError"></div>
+
+    <div id="mainContainer">
+    <div id="coinRank"></div>   
+    <div id="coinName"></div>    
+    <img id="coinImage" src="" alt="">
+    <div id="coinPrice"></div>
+    </div>  
+
+    <script src="hammer.js"></script>
+    
+    <script src="scripts.js"></script>
+
+
+
+  </body>
+</html>
