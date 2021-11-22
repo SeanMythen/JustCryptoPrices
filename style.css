@@ -124,3 +124,10 @@
     width: 50%;
     height: 100%;
   }
+
+  .canvas-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+  }

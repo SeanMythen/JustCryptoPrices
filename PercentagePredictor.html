@@ -1,0 +1,140 @@
+<!--    
+
+    designed and developed by Sean Mythen
+            www.seanmythen.net
+
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-64778303-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-64778303-9');
+</script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579" />
+
+    <title>Just Crypto Prices</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    
+    <script src="chart.min.js"></script>
+    <script src="PercentagePredictor.js"></script>
+    
+    
+
+    
+  </head>
+
+  <body>
+
+
+    <!-- <div id="mainContainer">
+        <div id="coinRank"></div>   
+        <div id="coinName"></div>    
+        <img id="coinImage" src="" alt="">
+        <div id="coinPrice"></div>
+        </div> -->
+
+       
+
+<div class="canvas-container">
+    <canvas id="myChart" width="800" height="800"></canvas>
+  </div>
+
+    <script>
+
+
+const labels = DateArray;
+const data = {
+  labels: labels,
+  datasets: [{
+    label: 'Avax',
+    backgroundColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(255, 99, 132)',
+    data: priceArray,
+    hidden: false,
+  }]
+};
+const config = {
+  type: 'line',
+  data: data,
+  options: {
+    elements: {
+                    point:{
+                        radius: 0,
+                    }
+                },
+                animation: {
+        duration: 0,
+    },
+    scales: {
+      y: {
+            max: 140,
+            min: 0,
+            ticks: {
+                stepSize: .5
+            }
+        }
+        }    
+  }
+
+};
+
+
+
+const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+  
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
